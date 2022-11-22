@@ -12,6 +12,7 @@ import io
 import numpy
 from PIL import Image
 from PIL import ImageEnhance
+import info from info
 
 from requests import session, post, adapters
 adapters.DEFAULT_RETRIES = 5
@@ -139,9 +140,10 @@ class Zlapp(Fudan):
         检查
         """
         print("◉检测是否已提交")
-        get_info = self.session.get(
-            'https://zlapp.fudan.edu.cn/ncov/wap/fudan/get-info')
-        last_info = get_info.json()
+#         get_info = self.session.get(
+#             'https://zlapp.fudan.edu.cn/ncov/wap/fudan/get-info')
+#         last_info = get_info.json()
+        last_info = json.loads(info)
 
         print("◉上一次提交日期为:", last_info["d"]["info"]["date"])
 
